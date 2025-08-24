@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8 minimum-scale=0.8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Admin Panel - Lexus Roadshow</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -10,6 +11,253 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(138, 138, 138, 0.1);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .search-filter-container {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+            justify-content: flex-start;
+            overflow-x: auto;
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1.5px solid #1a2530;
+            border-radius: 8px;
+            padding: 10px 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.155);
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.255);
+            border-color: #000; 
+            transition: all 0.3s ease;
+        }
+        
+        .search-box i {
+            color: #899091;
+            margin-right: 10px;
+        }
+        
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 16px;
+        }
+        
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            min-width: 0;
+            justify-items: stretch;
+        }
+        @media (max-width: 600px) {
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            height: 30px;
+            gap: 10px;
+            justify-content: stretch;
+            width: 100%;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: #2c3e50;
+            white-space: nowrap;
+        }
+        
+        select, input {
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            background: white;
+            font-size: 14px;
+            width: 100%;
+            min-width: 0;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        select:hover{
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.255);
+            transition: all 0.3s ease;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            min-width: 900px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #000000;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            cursor: pointer;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        th:hover {
+            background-color: #1a2530;
+        }
+        
+        th i {
+            margin-left: 5px;                              
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s;
+        }
+        
+        .btn-view {
+            background-color: #000000;
+            color: white;
+        }
+        
+        .btn-view:hover {
+            background-color: #000000;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+        
+        .pagination button {
+            padding: 10px 20px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .pagination button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .page-info {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .results-info {
+            margin-top: 10px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .sort-symbol {
+            font-size: 13px;
+            margin-left: 4px;
+            color: #e0e0e0;
+            font-family: inherit;
+            vertical-align: middle;
+            letter-spacing: -2px;
+        }
+        .overflow-x-auto {
+            overflow-x: auto;
+            max-width: 100vw;
+        }
+
+        .btn-reset {
+            background-color: #000000;
+            color: white;
+            padding: 10px 15px;
+            white-space: nowrap;
+            display: flex;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .btn-reset:hover {
+            background-color: #7b7b7b;
+        }
+
+        .sidebar-closed {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-open {
+            transform: translateX(0);
+        }
+
+        .main-content-expanded {
+            margin-left: 0 !important;
+        }
+
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            #sidebar-toggle {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -25,13 +273,13 @@
             <form id="login-form" class="space-y-6">
                 <div>
                     <label for="username" class="text-sm font-medium text-gray-700">Username</label>
-                    <input id="username" name="username" type="text" autocomplete="username" required class="block w-full px-3 py-2 mt-1 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <input id="username" name="username" type="text" autocomplete="username" required class="block w-full px-3 py-2 mt-1 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-black focus:border-black sm:text-sm">
                 </div>
                 <div>
                     <label for="password" class="text-sm font-medium text-gray-700">Password</label>
-                    <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full px-3 py-2 mt-1 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full px-3 py-2 mt-1 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-black focus:border-black sm:text-sm">
                 </div>
-                <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
                     Sign in
                 </button>
             </form>
@@ -40,7 +288,7 @@
 
     <div id="admin-panel" class="hidden">
         <div class="flex h-screen bg-gray-200">
-            <div class="flex flex-col w-64 bg-gray-800">
+            <div class="flex flex-col w-64 bg-gray-800 fixed top-0 left-0 h-full z-40">
                 <div class="flex items-center justify-center h-16 text-white bg-gray-900">
                     <span class="text-xl font-bold">Admin Panel</span>
                 </div>
@@ -59,13 +307,18 @@
 
             <div class="flex flex-col flex-grow">
                 <div class="flex items-center justify-between flex-shrink-0 h-16 px-8 bg-white border-b border-gray-200">
-                    <h1 class="text-lg font-medium" id="page-title">Dashboard</h1>
+                    <div class="flex items-center">
+                        <button id="sidebar-toggle" class="mr-4 text-gray-700 hover:text-gray-900 md:hidden">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                        <h1 class="text-lg font-medium" id="page-title">Dashboard</h1>
+                    </div>
                     <div class="flex items-center">
                         <span class="text-sm" id="user-email">Welcome, Lexus</span>
                     </div>
                 </div>
-                <div class="flex-grow p-6 overflow-auto bg-gray-100" id="main-content">
-                    <div id="dashboard-view">
+                <div class="flex-grow p-6 overflow-auto bg-gray-100 ml-64 transition-all" id="main-content">
+                        <div id="dashboard-view">
                         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                             <div class="p-6 bg-white rounded-lg shadow-md">
                                 <h3 class="text-lg font-medium text-gray-700">Total Clients</h3>
@@ -86,20 +339,136 @@
                         </div>
                     </div>
                     <div id="clients-view" class="hidden">
-                        <div class="overflow-x-auto bg-white rounded-lg shadow">
-                            <table class="min-w-full leading-normal">
-                                <thead>
-                                    <tr>
-                                        <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">Client</th>
-                                        <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">Contact</th>
-                                        <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">Interested In</th>
-                                        <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">Registered On</th>
-                                        <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200"></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="clients-table-body">
-                                </tbody>
-                            </table>
+                        <div class="card">
+                            <div class="overflow-x-auto">
+                                <h1 class="mt-2 mb-5 text-3xl font-bold text-gray-900 text-center">Client Records</h1>
+                                <div class="search-filter-container">
+                                    <div class="search-box">
+                                        <i class="fas fa-search"></i>
+                                        <input type="text" id="search-input" placeholder="Search Clients">
+                                    </div>
+                                </div>
+                                
+                                <div class="filter-row">
+                                    <div class="filter-group">
+                                        <span class="filter-label">Gender:</span>
+                                        <select id="gender-filter">
+                                            <option value="">All Genders</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="filter-group">
+                                        <span class="filter-label">Age:</span>
+                                            <select id="age-filter">
+                                                <option value="">All Ages</option>
+                                                <option value="18-24">18-24</option>
+                                                <option value="25-34">25-34</option>
+                                                <option value="35-44">35-44</option>
+                                                <option value="45-54">45-54</option>
+                                                <option value="55-64">55-64</option>
+                                                <option value="65+">65+</option>
+                                            </select>
+                                    </div>
+                                    
+                                    <div class="filter-group">
+                                        <span class="filter-label">Income:</span>
+                                            <select id="income-filter">
+                                                <option value="">All Incomes</option>
+                                                <option value="under-2500">Under RM2,500</option>
+                                                <option value="2501-5000">RM2,501 - RM5,000</option>
+                                                <option value="5001-7500">RM5,001 - RM7,500</option>
+                                                <option value="7501-10000">RM7,501 - RM10,000</option>
+                                                <option value="10001-15000">RM10,001 - RM15,000</option>
+                                                <option value="15001-20000">RM15,001 - RM20,000</option>
+                                                <option value="over-20001">Over RM20,001</option>
+                                            </select>
+                                    </div>
+                                    
+                                    <div class="filter-group">
+                                        <span class="filter-label">Car Model:</span>
+                                            <select id="car-model-filter">
+                                                <option value="">All Models</option>
+                                                <option value="LBX">LBX</option>
+                                                <option value="NX">NX</option>
+                                                <option value="RX">RX</option>
+                                                <option value="RZ">RZ</option>
+                                                <option value="ES">ES</option>
+                                            </select>
+                                    </div>
+
+                                    <div class="filter-group">
+                                        <span class="filter-label">Test Drive:</span>
+                                        <select id="test-drive-filter">
+                                            <option value="">All</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="filter-group">
+                                        <span class="filter-label">License Expiry:</span>
+                                        <select id="license-filter">
+                                            <option value="">Any Expiry</option>
+                                            <option value="expiring-soon">Expiring Soon (within 6 months)</option>
+                                            <option value="valid-long-term">Valid Long Term</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="filter-group">
+                                        <span class="filter-label">Register Date:</span>
+                                        <select id="registration-date-filter">
+                                            <option value="">All</option>
+                                            <option value="last-week">Last Week</option>
+                                            <option value="last-month">Last Month</option>
+                                            <option value="last-3-months">Last 3 Months</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="width:100%;display:flex;justify-content:flex-end;">
+                                    <button id="reset-btn" class="btn btn-reset">
+                                        <i class="fas fa-redo"></i> Reset Filters
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="overflow-x-auto">
+                                <h1 class="mt-2 text-3xl font-bold text-gray-900 text-center">Results</h1>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th data-sort="id"><span class="header-label">ID</span><span class="sort-symbol">▲▼</span></th>
+                                            <th data-sort="fullName"><span class="header-label">Full Name</span><span class="sort-symbol">▲▼</span></th>
+                                            <th data-sort="contactNumber"><span class="header-label">Contact</span><span class="sort-symbol">▲▼</span></th>
+                                            <th data-sort="email"><span class="header-label">Email</span><span class="sort-symbol">▲▼</span></th>
+                                            <th data-sort="gender"><span class="header-label">Gender</span><span class="sort-symbol">▲▼</span></th>
+                                            <th data-sort="ageRange"><span class="header-label">Age</span><span class="sort-symbol">▲▼</span></th>
+                                            <th data-sort="monthlyIncome"><span class="header-label">Income</span><span class="sort-symbol">▲▼</span></th>
+                                            <th data-sort="carModel"><span class="header-label">Car Model</span><span class="sort-symbol">▲▼</span></th>
+                                            <th data-sort="testDrive"><span class="header-label">Test Drive</span><span class="sort-symbol">▲▼</span></th>
+                                            <th data-sort="registrationDate"><span class="header-label">Reg. Date</span><span class="sort-symbol">▲▼</span></th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="clients-table-body">
+                                        <!-- Client details will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="results-info">
+                                Showing <span id="results-count">0</span> of <span id="total-results">0</span> clients
+                            </div>
+                            
+                            <div class="pagination">
+                                <button id="prev-page" disabled>Previous</button>
+                                <span class="page-info">Page <span id="current-page">1</span> of <span id="total-pages">1</span></span>
+                                <button id="next-page" disabled>Next</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,6 +489,154 @@
     </div>
 
     <script>
+        // Sample client data
+        const clientsData = [
+            {
+                id: '0',
+                fullName: 'example',
+                contactNumber: '011-.....',
+                email: 'example@example.com',
+                gender: 'Female',
+                ageRange: '25-34',
+                monthlyIncome: 'RM5,001 - RM7,500',
+                consultant: '....',
+                carModel: ['LBX'],
+                testDrive: 'No',
+                drivingLicenseExpiryDate: '2027-05-20',
+                registrationDate: new Date('2025-08-05'),
+                licenseFileName: 'example_license.png',
+                licenseFileUrl: '#'
+            },
+            {
+                id: '1',
+                fullName: 'Aisha Rahman',
+                contactNumber: '011-1234567',
+                email: 'aisha@example.com',
+                gender: 'Female',
+                ageRange: '25-34',
+                monthlyIncome: 'RM5,001 - RM7,500',
+                consultant: 'Sarah Lee',
+                carModel: ['LBX'],
+                testDrive: 'No',
+                drivingLicenseExpiryDate: '2027-05-20',
+                registrationDate: new Date('2025-07-15'),
+                licenseFileName: 'example_license.png',
+                licenseFileUrl: '#'
+            },
+            {
+                id: '2',
+                fullName: 'Benjamin Tan',
+                contactNumber: '012-9876543',
+                email: 'benjamin@example.com',
+                gender: 'Male',
+                ageRange: '35-44',
+                monthlyIncome: 'RM7,501 - RM10,000',
+                consultant: 'David Wong',
+                carModel: ['NX', 'RX'],
+                testDrive: 'Yes',
+                drivingLicenseExpiryDate: '2026-11-10',
+                registrationDate: new Date('2025-07-20'),
+                licenseFileName: 'example_license.png',
+                licenseFileUrl: '#'
+            },
+            {
+                id: '3',
+                fullName: 'Chandran Subramaniam',
+                contactNumber: '013-4567890',
+                email: 'chandran@example.com',
+                gender: 'Male',
+                ageRange: '45-54',
+                monthlyIncome: 'RM10,001 - RM15,000',
+                consultant: 'Amy Chen',
+                carModel: ['RZ'],
+                testDrive: 'Yes',
+                drivingLicenseExpiryDate: '2028-01-15',
+                registrationDate: new Date('2025-08-01'),
+                licenseFileName: 'example_license.png',
+                licenseFileUrl: '#'
+            },
+            {
+                id: '4',
+                fullName: 'Diana Lee',
+                contactNumber: '014-2345678',
+                email: 'diana@example.com',
+                gender: 'Female',
+                ageRange: '18-24',
+                monthlyIncome: 'RM2,501 - RM5,000',
+                consultant: 'Sarah Lee',
+                carModel: ['ES'],
+                testDrive: 'No',
+                drivingLicenseExpiryDate: '2027-09-30',
+                registrationDate: new Date('2025-08-05'),
+                licenseFileName: 'example_license.png',
+                licenseFileUrl: '#'
+            },
+            {
+                id: '5',
+                fullName: 'Emma Roberts',
+                contactNumber: '016-3456789',
+                email: 'emma@example.com',
+                gender: 'Female',
+                ageRange: '25-34',
+                monthlyIncome: 'RM5,001 - RM7,500',
+                consultant: 'David Wong',
+                carModel: ['LBX', 'ES'],
+                testDrive: 'Yes',
+                drivingLicenseExpiryDate: '2026-06-15',
+                registrationDate: new Date('2025-08-10'),
+                licenseFileName: 'example_license.png',
+                licenseFileUrl: '#'
+            },
+            {
+                id: '6',
+                fullName: 'Franklin Gomez',
+                contactNumber: '017-8765432',
+                email: 'franklin@example.com',
+                gender: 'Male',
+                ageRange: '65+',
+                monthlyIncome: 'Over RM20,001',
+                consultant: 'Amy Chen',
+                carModel: ['RX'],
+                testDrive: 'No',
+                drivingLicenseExpiryDate: '2027-12-01',
+                registrationDate: new Date('2025-08-12'),
+                licenseFileName: 'example_license.png',
+                licenseFileUrl: '#'
+            },
+            {
+                id: '7',
+                fullName: 'Grace Lim',
+                contactNumber: '018-7654321',
+                email: 'grace@example.com',
+                gender: 'Female',
+                ageRange: '35-44',
+                monthlyIncome: 'RM7,501 - RM10,000',
+                consultant: 'Sarah Lee',
+                carModel: ['RX'],
+                testDrive: 'Yes',
+                drivingLicenseExpiryDate: '2028-03-20',
+                registrationDate: new Date('2025-08-15'),
+                licenseFileName: 'example_license.png',
+                licenseFileUrl: '#'
+            },
+            {
+                id: '8',
+                fullName: 'Henry Singh',
+                contactNumber: '019-6543210',
+                email: 'henry@example.com',
+                gender: 'Male',
+                ageRange: '55-64',
+                monthlyIncome: 'RM5,001 - RM7,500',
+                consultant: 'David Wong',
+                carModel: ['RZ', 'ES'],
+                testDrive: 'No',
+                drivingLicenseExpiryDate: '2026-08-05',
+                registrationDate: new Date('2025-08-18'),
+                licenseFileName: 'example_license.png',
+                licenseFileUrl: '#'
+            }
+        ];
+
         document.addEventListener('DOMContentLoaded', () => {
             const loginSection = document.getElementById('login-section');
             const adminPanel = document.getElementById('admin-panel');
@@ -139,25 +656,32 @@
             const closeModal = document.getElementById('close-modal');
             const modalContent = document.getElementById('modal-content');
 
-            const mockClients = [
-                {
-                    id: '1',
-                    fullName: 'example',
-                    contactNumber: '011-.....',
-                    email: 'example@example.com',
-                    gender: 'Female',
-                    ageRange: '1-100',
-                    monthlyIncome: 'RM5,000 - RM7,500',
-                    consultant: '....',
-                    carModel: ['LBX'],
-                    testDrive: 'No',
-                    drivingLicenseExpiryDate: '2027-05-20',
-                    registrationDate: new Date('2025-08-05'),
-                    licenseFileName: 'example_license.png',
-                    licenseFileUrl: '#'
-                }
-            ];
-
+            const searchInput = document.getElementById('search-input');
+            const prevPageBtn = document.getElementById('prev-page');
+            const nextPageBtn = document.getElementById('next-page');
+            const currentPageEl = document.getElementById('current-page');
+            const totalPagesEl = document.getElementById('total-pages');
+            const resultsCountEl = document.getElementById('results-count');
+            const totalResultsEl = document.getElementById('total-results');
+            
+            const genderFilter = document.getElementById('gender-filter');
+            const ageFilter = document.getElementById('age-filter');
+            const incomeFilter = document.getElementById('income-filter');
+            const carModelFilter = document.getElementById('car-model-filter');
+            const testDriveFilter = document.getElementById('test-drive-filter');
+            const licenseFilter = document.getElementById('license-filter');
+            const registrationDateFilter = document.getElementById('registration-date-filter');
+            
+            let currentSort = {
+                field: 'id',
+                direction: 'asc'
+            };
+            
+            let currentPage = 1;
+            const itemsPerPage = 5;
+            let totalPages = Math.ceil(clientsData.length / itemsPerPage);
+            let filteredData = [...clientsData];
+            
             // --- Authentication ---
             loginForm.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -169,6 +693,7 @@
                     adminPanel.classList.remove('hidden');
                     loginError.classList.add('hidden');
                     loadClients();
+                    init();
                 } else {
                     loginError.textContent = 'Invalid username or password.';
                     loginError.classList.remove('hidden');
@@ -201,41 +726,15 @@
 
             // --- Client Data ---
             function loadClients() {
-                totalClientsSpan.textContent = mockClients.length;
-                renderClientsTable(mockClients);
+                totalClientsSpan.textContent = clientsData.length;
+                renderTable();
             }
 
-            function renderClientsTable(clients) {
-                clientsTableBody.innerHTML = '';
-                clients.forEach(client => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td class="px-5 py-5 bg-white border-b border-gray-200">
-                            <p class="text-gray-900 whitespace-no-wrap">${client.fullName}</p>
-                        </td>
-                        <td class="px-5 py-5 bg-white border-b border-gray-200">
-                            <p class="text-gray-900 whitespace-no-wrap">${client.contactNumber}</p>
-                            <p class="text-sm text-gray-600 whitespace-no-wrap">${client.email}</p>
-                        </td>
-                        <td class="px-5 py-5 bg-white border-b border-gray-200">
-                            <p class="text-gray-900 whitespace-no-wrap">${client.carModel.join(', ')}</p>
-                        </td>
-                        <td class="px-5 py-5 bg-white border-b border-gray-200">
-                            <p class="text-gray-900 whitespace-no-wrap">${client.registrationDate.toLocaleDateString()}</p>
-                        </td>
-                        <td class="px-5 py-5 text-sm text-right bg-white border-b border-gray-200">
-                            <button data-id="${client.id}" class="view-details-btn text-indigo-600 hover:text-indigo-900">View Details</button>
-                        </td>
-                    `;
-                    clientsTableBody.appendChild(row);
-                });
-            }
-            
             // --- Modal Logic ---
             clientsTableBody.addEventListener('click', (e) => {
                 if (e.target.classList.contains('view-details-btn')) {
                     const clientId = e.target.dataset.id;
-                    const client = mockClients.find(c => c.id === clientId);
+                    const client = clientsData.find(c => c.id === clientId);
                     if (client) {
                         displayClientDetails(client);
                     }
@@ -255,7 +754,7 @@
                         <div><strong>Interested Models:</strong> ${client.carModel.join(', ')}</div>
                         <div><strong>Test Drive?:</strong> ${client.testDrive}</div>
                         <div><strong>License Expiry:</strong> ${client.drivingLicenseExpiryDate}</div>
-                        <div><strong>License File:</strong> <a href="${client.licenseFileUrl || '#'}" target="_blank" class="text-indigo-600 hover:underline">${client.licenseFileName || 'Not Uploaded'}</a></div>
+                        <div><strong>License File:</strong> <a href="${client.licenseFileUrl || '#'}" target="_blank" class="text-indigo-600 hover:underline">${client.licenseFileName}</a></div>
                     </div>
                 `;
                 clientModal.classList.remove('hidden');
@@ -268,6 +767,314 @@
             window.addEventListener('click', (e) => {
                 if (e.target === clientModal) {
                     clientModal.classList.add('hidden');
+                }
+            });
+
+            function init() {
+                totalPagesEl.textContent = totalPages;
+                totalResultsEl.textContent = clientsData.length;
+                applySorting();
+                setupEventListeners();
+                updatePagination();
+            }
+            
+            function setupEventListeners() {
+                searchInput.addEventListener('input', handleSearch);
+                
+                document.getElementById('reset-btn').addEventListener('click', resetFilters);
+
+                genderFilter.addEventListener('change', applyFilters);
+                ageFilter.addEventListener('change', applyFilters);
+                incomeFilter.addEventListener('change', applyFilters);
+                carModelFilter.addEventListener('change', applyFilters);
+                testDriveFilter.addEventListener('change', applyFilters);
+                licenseFilter.addEventListener('change', applyFilters);
+                registrationDateFilter.addEventListener('change', applyFilters);
+
+                prevPageBtn.addEventListener('click', () => changePage(currentPage - 1));
+                nextPageBtn.addEventListener('click', () => changePage(currentPage + 1));
+ 
+                document.querySelectorAll('th[data-sort]').forEach(header => {
+                    header.addEventListener('click', () => {
+                        const sortField = header.getAttribute('data-sort');
+                        
+                        if (currentSort.field === sortField) {
+                            currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                        } else {
+                            currentSort.field = sortField;
+                            currentSort.direction = 'asc';
+                        }
+                        
+                        applySorting();
+                    });
+                });
+            }
+
+            function resetFilters() {
+
+                searchInput.value = '';
+                
+                genderFilter.value = '';
+                ageFilter.value = '';
+                incomeFilter.value = '';
+                carModelFilter.value = '';
+                testDriveFilter.value = '';
+                licenseFilter.value = '';
+                registrationDateFilter.value = '';
+                
+                currentSort = {
+                    field: 'id',
+                    direction: 'asc'
+                };
+                
+                currentPage = 1;
+                
+                filteredData = [...clientsData];
+                
+                applySorting();
+                updatePagination();
+                renderTable();
+            }
+        
+            function handleSearch() {
+                applyFilters();
+            }
+            
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                filteredData = clientsData.filter(client => {
+
+                    if (searchTerm && !(
+                        client.fullName.toLowerCase().includes(searchTerm) ||
+                        client.email.toLowerCase().includes(searchTerm) ||
+                        client.contactNumber.includes(searchTerm)
+                    )) {
+                        return false;
+                    }
+                    
+                    if (genderFilter.value && client.gender !== genderFilter.value) {
+                        return false;
+                    }
+                    
+                    if (ageFilter.value && client.ageRange !== ageFilter.value) {
+                        return false;
+                    }
+                    
+                    if (incomeFilter.value && client.monthlyIncome !== incomeFilter.value) {
+                        return false;
+                    }
+                    
+                    if (carModelFilter.value && !client.carModel.includes(carModelFilter.value)) {
+                        return false;
+                    }
+                    
+                    if (testDriveFilter.value && client.testDrive !== testDriveFilter.value) {
+                        return false;
+                    }
+                    
+                    if (licenseFilter.value) {
+                        const today = new Date();
+                        const expiryDate = new Date(client.drivingLicenseExpiryDate);
+                        const sixMonthsFromNow = new Date();
+                        sixMonthsFromNow.setMonth(sixMonthsFromNow.getMonth() + 6);
+                        
+                        if (licenseFilter.value === 'expiring-soon' && expiryDate > sixMonthsFromNow) {
+                            return false;
+                        }
+                        
+                        if (licenseFilter.value === 'valid-long-term' && expiryDate <= sixMonthsFromNow) {
+                            return false;
+                        }
+                    }
+                    
+                    if (registrationDateFilter.value) {
+                        const today = new Date();
+                        today.setHours(0,0,0,0);
+                        const regDate = new Date(client.registrationDate);
+                        regDate.setHours(0,0,0,0);
+                        
+                        if (registrationDateFilter.value === 'last-week') {
+                            const weekAgo = new Date(today);
+                            weekAgo.setDate(today.getDate() - 6);
+                            if (regDate < weekAgo || regDate > today) {
+                                return false;
+                            }
+                        } else if (registrationDateFilter.value === 'last-month') {
+                            const monthAgo = new Date(today);
+                            monthAgo.setDate(today.getDate() - 29);
+                            if (regDate < monthAgo || regDate > today) {
+                                return false;
+                            }
+                        } else if (registrationDateFilter.value === 'last-3-months') {
+                            const threeMonthsAgo = new Date(today);
+                            threeMonthsAgo.setDate(today.getDate() - 89);
+                            if (regDate < threeMonthsAgo || regDate > today) {
+                                return false;
+                            }
+                        }
+                    }
+                    
+                    return true;
+                });
+                
+                applySorting();
+            }
+            
+            function applySorting() {
+                const sortField = currentSort.field;
+                const order = currentSort.direction;
+                
+                filteredData.sort((a, b) => {
+                    let valueA = a[sortField];
+                    let valueB = b[sortField];
+                    
+                    if (Array.isArray(valueA)) {
+                        valueA = valueA.join(', ');
+                        valueB = valueB.join(', ');
+                    }
+                    
+                    // Handle date sorting
+                    if (sortField === 'registrationDate' || sortField === 'drivingLicenseExpiryDate') {
+                        valueA = new Date(valueA);
+                        valueB = new Date(valueB);
+                    }
+                    
+                    if (valueA < valueB) {
+                        return order === 'asc' ? -1 : 1;
+                    }
+                    
+                    if (valueA > valueB) {
+                        return order === 'asc' ? 1 : -1;
+                    }
+                    
+                    return 0;
+                });
+                
+                updateSortIcons();
+                currentPage = 1;
+                updatePagination();
+                renderTable();
+            }
+            
+            function updateSortIcons() {
+                document.querySelectorAll('th .sort-symbol').forEach(symbol => {
+                    symbol.textContent = '▲▼';
+                });
+                const currentHeader = document.querySelector(`th[data-sort="${currentSort.field}"] .sort-symbol`);
+                if (currentHeader) {
+                    currentHeader.textContent = currentSort.direction === 'asc' ? '▲' : '▼';
+                }
+            }
+            
+            function changePage(page) {
+                if (page < 1 || page > totalPages) return;
+                
+                currentPage = page;
+                updatePagination();
+                renderTable();
+            }
+            
+            function updatePagination() {
+                totalPages = Math.ceil(filteredData.length / itemsPerPage) || 1;
+                
+                if (currentPage > totalPages) {
+                    currentPage = totalPages;
+                }
+                
+                currentPageEl.textContent = currentPage;
+                totalPagesEl.textContent = totalPages;
+                
+                prevPageBtn.disabled = currentPage === 1;
+                nextPageBtn.disabled = currentPage === totalPages;
+                
+                const startCount = Math.min((currentPage - 1) * itemsPerPage + 1, filteredData.length);
+                const endCount = Math.min(currentPage * itemsPerPage, filteredData.length);
+                
+                resultsCountEl.textContent = `${startCount} - ${endCount}`;
+                totalResultsEl.textContent = filteredData.length;
+            }
+            
+            function formatDate(date) {
+                return new Date(date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            }
+            
+            function renderTable() {
+                clientsTableBody.innerHTML = '';
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
+                
+                if (filteredData.length === 0) {
+                    clientsTableBody.innerHTML = `
+                        <tr>
+                            <td colspan="11" style="text-align: center; padding: 20px;">
+                                No clients found matching your criteria.
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+                
+                for (let i = startIndex; i < endIndex; i++) {
+                    const client = filteredData[i];
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${client.id}</td>
+                        <td>${client.fullName}</td>
+                        <td>${client.contactNumber}</td>
+                        <td>${client.email}</td>
+                        <td>${client.gender}</td>
+                        <td>${client.ageRange}</td>
+                        <td>${client.monthlyIncome}</td>
+                        <td>${client.carModel.join(', ')}</td>
+                        <td>${client.testDrive}</td>
+                        <td>${formatDate(client.registrationDate)}</td>
+                        <td class="actions">
+                            <button class="btn btn-view view-details-btn" data-id="${client.id}"><i class="fas fa-eye"></i> View</button>
+                        </td>
+                    `;
+                    clientsTableBody.appendChild(row);
+                }
+            }
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.querySelector('.flex.flex-col.w-64.bg-gray-800.fixed');
+            const mainContent = document.getElementById('main-content');
+
+            if (sidebarToggle && sidebar && mainContent) {
+                sidebarToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('sidebar-closed');
+                    sidebar.classList.toggle('sidebar-open');
+                    mainContent.classList.toggle('ml-64');
+                    mainContent.classList.toggle('main-content-expanded');
+                });
+                
+                sidebar.classList.add('transition-all');
+                
+                if (window.innerWidth < 768) {
+                    sidebar.classList.add('sidebar-closed');
+                    mainContent.classList.add('main-content-expanded');
+                } else {
+                    sidebar.classList.add('sidebar-open');
+                    mainContent.classList.add('ml-64');
+                }
+            }
+
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth < 768 && 
+                    sidebar && 
+                    !sidebar.contains(e.target) && 
+                    sidebarToggle && 
+                    !sidebarToggle.contains(e.target) &&
+                    sidebar.classList.contains('sidebar-open')) {
+                    sidebar.classList.remove('sidebar-open');
+                    sidebar.classList.add('sidebar-closed');
+                    mainContent.classList.remove('ml-64');
+                    mainContent.classList.add('main-content-expanded');
                 }
             });
         });
