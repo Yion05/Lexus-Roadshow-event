@@ -76,7 +76,7 @@ const RegistrationForm: React.FC = () => {
     if (!/^\+?[1-9]\d{7,14}$/.test(formData.contact_number.replace(/\s/g, "")))
       newErrors.contact_number = "Please enter a valid contact number";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_address))
-      newErrors.email_address = "Please enter a valid email_address address";
+      newErrors.email_address = "Please enter a valid email address";
     if (!formData.gender) newErrors.gender = "Please select your gender";
     if (!formData.age_range)
       newErrors.age_range = "Please select your age range";
@@ -249,7 +249,7 @@ const RegistrationForm: React.FC = () => {
                   htmlFor="email_address"
                   className="block mb-2 font-semibold text-white"
                 >
-                  email_address Address *
+                  Email Address *
                 </label>
                 <input
                   type="email_address"
@@ -258,7 +258,7 @@ const RegistrationForm: React.FC = () => {
                   value={formData.email_address}
                   onChange={handleInputChange}
                   required
-                  placeholder="Enter your email_address address"
+                  placeholder="Enter your email address"
                   className={inputClasses("email_address")}
                 />
                 {errors.email_address && (
@@ -356,7 +356,7 @@ const RegistrationForm: React.FC = () => {
                   htmlFor="assigned_sales_consultant"
                   className="block mb-2 font-semibold text-white"
                 >
-                  Who is your assigned sales assigned_sales_consultant? *
+                  Who is your assigned sales assigned sales consultant? *
                 </label>
                 <input
                   type="text"
@@ -365,7 +365,7 @@ const RegistrationForm: React.FC = () => {
                   value={formData.assigned_sales_consultant}
                   onChange={handleInputChange}
                   required
-                  placeholder="Enter your sales assigned_sales_consultant's name"
+                  placeholder="Enter your sales assigned sales consultant's name"
                   className={inputClasses("assigned_sales_consultant")}
                 />
                 {errors.assigned_sales_consultant && (
@@ -559,3 +559,4 @@ const RegistrationForm: React.FC = () => {
 
 
 export default RegistrationForm;
+
