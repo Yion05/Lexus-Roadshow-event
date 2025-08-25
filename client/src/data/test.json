@@ -1,0 +1,49 @@
+[
+    {
+        "questionID": "full-name",
+        "answer": "Fu Hua"
+    },
+    {
+        "questionID": "contact-number",
+        "answer": "6001110917368"
+    },
+    {
+        "questionID": "email-address",
+        "answer": "kaixing635@gmail.com"
+    },
+    {
+        "questionID": "gender",
+        "answer": "female"
+    },
+    {
+        "questionID": "age-range",
+        "answer": "18-24"
+    },
+    {
+        "questionID": "monthly-income",
+        "answer": "2500-5000"
+    },
+    {
+        "questionID": "assigned-sales-consultant",
+        "answer": "Sin Kai Xing"
+    },
+    {
+        "questionID": "interested-car-model",
+        "answer": [
+            "RX - Luxury Large SUV",
+            "LBX - Subcompact Crossover"
+        ]
+    },
+    {
+        "questionID": "test-drive-preference",
+        "answer": "true"
+    },
+    {
+        "questionID": "license-expiry-date",
+        "answer": "2025-08-27"
+    },
+    {
+        "questionID": "driving-license ",
+        "answer": {}
+    }
+]
