@@ -235,7 +235,7 @@ const RegistrationForm: React.FC = () => {
                   value={formData.contact_number}
                   onChange={handleInputChange}
                   required
-                  placeholder="Enter your phone number (e.g: 600123456789000)"
+                  placeholder="Enter your phone number (e.g: 6012345678900)"
                   className={inputClasses("contact_number")}
                 />
                 {errors.contact_number && (
@@ -556,5 +556,6 @@ const RegistrationForm: React.FC = () => {
     </>
   );
 };
+
 
 export default RegistrationForm;
