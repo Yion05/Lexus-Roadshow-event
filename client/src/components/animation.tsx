@@ -5,7 +5,7 @@ const Animation: React.FC = () => {
     <div className="fixed inset-0 z-10 flex flex-col items-center justify-center bg-black animate-pulse scale-120">
       <div> 
         <img 
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpsVPst5XTXecPPBr3t0gd2a8-DiKDVChY0g&s" 
+          src="https://lexusexperienceamazing.com.my/Lexus_3D_V_CMYK.psd" 
           alt="Lexus Logo" 
           className="w-[300px] h-[300px] object-contain"
         />
@@ -16,6 +16,7 @@ const Animation: React.FC = () => {
 
 
 export default Animation;
+
 
 
 
