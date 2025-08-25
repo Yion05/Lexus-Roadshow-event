@@ -178,8 +178,6 @@ const RegistrationForm: React.FC = () => {
       <div className={formContainerClasses}>
         <h2 className="text-center text-3xl font-bold text-white mb-6">
           LEXUS ROADSHOW
-          <br />
-          (04 - 08 AUG 2025)
         </h2>
         <p className="text-justify text-white mb-6">
           The Malaysia Personal Data Protection Act has taken place effective 15
@@ -559,4 +557,5 @@ const RegistrationForm: React.FC = () => {
 
 
 export default RegistrationForm;
+
 
