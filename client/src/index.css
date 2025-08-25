@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,300..800;1,300..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@custom-variant hover (&:hover);
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-main: "Noto Sans", sans-serif;
+    --color-main: #faf3e0;
+    --color-secondary: #b9a8b2;
+    @keyframes pulse-once {
+            0%{
+                transform: 'sacle(0.8)';
+                opacity: '0.5';
+            }
+            50% {
+                transform: 'scale(1.1)';
+                opacity: '1'
+            }
+            100% {
+                transform: 'scale(1.0)';
+                opacity: '1'
+            }
+    }
+
+    @keyframes fadeOut {
+            0% {
+                opacity: '1';
+            }
+            100% {
+                opacity: '0';
+            }
+    }
+    --animate-pulse-once: 'pulse-once 2s ease-in-out forwards';
+    --animate-fade-out: 'fadeOut 1s forwards';
+    --animate-then-fade: 'pulse-once 2s ease-in-out, fadeOut 1s ease-in-out 2s forwards'
+}
+
+    
