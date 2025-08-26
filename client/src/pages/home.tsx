@@ -345,12 +345,12 @@ const RegistrationForm: React.FC = () => {
                   </p>
                 )}
               </div>
-              <div className="form-group md:col-span-2">
+              <div className="form-group">
                 <label
                   htmlFor="assigned_sales_consultant"
                   className="block mb-2 font-semibold text-white"
                 >
-                  Who is your assigned sales assigned sales consultant? *
+                  Who is your assigned sales assigned_sales_consultant? *
                 </label>
                 <select
                   id="assigned_sales_consultant"
@@ -360,12 +360,39 @@ const RegistrationForm: React.FC = () => {
                   required
                   className={inputClasses("assigned_sales_consultant")}
                 >
-                  <option className="text-white bg-[#222222]" value="">Select your sales assigned sales consultant's name</option>
-                  <option className="text-white bg-[#222222]" value="Chan-Li-Ying">Chan Li Ying</option>
-                  <option className="text-white bg-[#222222]" value="Husainuddin-Bin-Yaakub">Husainuddin Bin Yaakub</option>
-                  <option className="text-white bg-[#222222]" value="Muhammad-Azrawadi-Bin-Nor-Aazmi">Muhammad Azrawadi Bin Nor Aazmi</option>
-                  <option className="text-white bg-[#222222]" value="Daphne-Soo">Daphne Soo</option>
-                  <option className="text-white bg-[#222222]" value="May-Tan-Lee-Nian">May Tan Lee Nian</option>
+                  <option className="text-white bg-[#222222]" value="">
+                    Select here
+                  </option>
+                  <option
+                    className="text-white bg-[#222222]"
+                    value="Chan Li Ying"
+                  >
+                    Chan Li Ying
+                  </option>
+                  <option
+                    className="text-white bg-[#222222]"
+                    value="Husainuddin Bin Yaakub"
+                  >
+                    Husainuddin Bin Yaakub
+                  </option>
+                  <option
+                    className="text-white bg-[#222222]"
+                    value="Muhammad Azrawadi Bin Nor Aazmi"
+                  >
+                    Muhammad Azrawadi Bin Nor Aazmi
+                  </option>
+                  <option
+                    className="text-white bg-[#222222]"
+                    value="Daphne Soo"
+                  >
+                    Daphne Soo
+                  </option>
+                  <option
+                    className="text-white bg-[#222222]"
+                    value="⁠May Tan Lee Nian"
+                  >
+                    ⁠May Tan Lee Nian55-64
+                  </option>
                 </select>
                 {errors.assigned_sales_consultant && (
                   <p className="text-red-500 text-sm mt-1">
@@ -373,8 +400,6 @@ const RegistrationForm: React.FC = () => {
                   </p>
                 )}
               </div>
-            </div>
-          </div>
 
           <div className="mb-6 pb-4 border-b border-gray-700">
             <h3 className="text-lg font-semibold text-white mb-4">
@@ -559,6 +584,7 @@ const RegistrationForm: React.FC = () => {
 
 
 export default RegistrationForm;
+
 
 
 
