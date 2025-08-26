@@ -281,8 +281,6 @@ const RegistrationForm: React.FC = () => {
                   <option className="text-white bg-[#222222]" value="">Select your gender</option>
                   <option className="text-white bg-[#222222]" value="Male">Male</option>
                   <option className="text-white bg-[#222222]" value="Female">Female</option>
-                  <option className="text-white bg-[#222222]" value="Other">Other</option>
-                  <option className="text-white bg-[#222222]" value="Prefer not to say">Prefer not to say</option>
                 </select>
                 {errors.gender && (
                   <p className="text-red-500 text-sm mt-1">{errors.gender}</p>
@@ -354,16 +352,21 @@ const RegistrationForm: React.FC = () => {
                 >
                   Who is your assigned sales assigned sales consultant? *
                 </label>
-                <input
-                  type="text"
+                <select
                   id="assigned_sales_consultant"
                   name="assigned_sales_consultant"
                   value={formData.assigned_sales_consultant}
                   onChange={handleInputChange}
                   required
-                  placeholder="Enter your sales assigned sales consultant's name"
                   className={inputClasses("assigned_sales_consultant")}
-                />
+                >
+                  <option className="text-white bg-[#222222]" value="">Select your sales assigned sales consultant's name</option>
+                  <option className="text-white bg-[#222222]" value="Chan-Li-Ying">Chan Li Ying</option>
+                  <option className="text-white bg-[#222222]" value="Husainuddin-Bin-Yaakub">Husainuddin Bin Yaakub</option>
+                  <option className="text-white bg-[#222222]" value="Muhammad-Azrawadi-Bin-Nor-Aazmi">Muhammad Azrawadi Bin Nor Aazmi</option>
+                  <option className="text-white bg-[#222222]" value="Daphne-Soo">Daphne Soo</option>
+                  <option className="text-white bg-[#222222]" value="May-Tan-Lee-Nian">May Tan Lee Nian</option>
+                </select>
                 {errors.assigned_sales_consultant && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.assigned_sales_consultant}
@@ -556,6 +559,7 @@ const RegistrationForm: React.FC = () => {
 
 
 export default RegistrationForm;
+
 
 
 
