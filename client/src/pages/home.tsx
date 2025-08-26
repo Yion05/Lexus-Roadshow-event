@@ -89,8 +89,6 @@ const RegistrationForm: React.FC = () => {
       newErrors.interested_car_model = "Please select at least one car model";
     if (!formData.test_drive_preference)
       newErrors.test_drive_preference = "Please select your choice";
-    if (!formData.license_expiry_date)
-      newErrors.license_expiry_date = "Please select a test drive date";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -558,6 +556,7 @@ const RegistrationForm: React.FC = () => {
 
 
 export default RegistrationForm;
+
 
 
 
