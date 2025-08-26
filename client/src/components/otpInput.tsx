@@ -38,7 +38,7 @@ const OtpInput: React.FC<OtpInputProps> = ({
 
   // Inverted colors: white to black, black to white
   const baseClasses = "w-11 h-11 text-center text-xl font-semibold border-2 rounded-lg transition-colors focus:outline-none text-white bg-black";
-  const defaultClasses = "border-white focus:border-black";
+  const defaultClasses = "border-white focus:border-gray-300";
   const errorClasses = "border-red-500 bg-red-900";
   const disabledClasses = "bg-gray-800 text-gray-500 cursor-not-allowed";
 
@@ -50,7 +50,7 @@ const OtpInput: React.FC<OtpInputProps> = ({
           ref={(el) => {
             inputsRef.current[index] = el;
           }}
-          type="text"
+          type="number"
           maxLength={1}
           value={value}
           onChange={(e) => handleChange(index, e.target.value)}
@@ -70,3 +70,4 @@ const OtpInput: React.FC<OtpInputProps> = ({
 };
 
 export default OtpInput;
+
