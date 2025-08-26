@@ -482,6 +482,7 @@ const RegistrationForm: React.FC = () => {
                     <FaCloudUploadAlt className="mr-2" /> Choose File
                   </label>
                   <input
+                    required
                     type="file"
                     id="driving_license"
                     name="driving_license"
@@ -557,5 +558,6 @@ const RegistrationForm: React.FC = () => {
 
 
 export default RegistrationForm;
+
 
 
