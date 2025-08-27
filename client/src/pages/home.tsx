@@ -400,7 +400,8 @@ const RegistrationForm: React.FC = () => {
                   </p>
                 )}
               </div>
-            </div>
+            </div> {/* Close the flex-col div for Personal Information */}
+          </div> {/* Close the mb-6 div for Personal Information */}
 
           <div className="mb-6 pb-4 border-b border-gray-700">
             <h3 className="text-lg font-semibold text-white mb-4">
@@ -412,31 +413,25 @@ const RegistrationForm: React.FC = () => {
                   Which of the following car model you are interested in? *
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mt-2">
-                  {allCarModels.map(
-                    (
-                      model 
-                    ) => (
-                      <div key={model} className="flex items-center">
-                        <input
-                          type="checkbox"
-                          id={model}
-                          name="carModel"
-                          value={model}
-                          checked={formData.interested_car_model.includes(
-                            model
-                          )}
-                          onChange={handleCheckboxChange}
-                          className="w-4 h-4 text-black bg-white border-white rounded focus:ring-black"
-                        />
-                        <label
-                          htmlFor={model}
-                          className="ml-3 text-sm font-medium text-white"
-                        >
-                          {model}
-                        </label>
-                      </div>
-                    )
-                  )}
+                  {allCarModels.map((model) => (
+                    <div key={model} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id={model}
+                        name="carModel"
+                        value={model}
+                        checked={formData.interested_car_model.includes(model)}
+                        onChange={handleCheckboxChange}
+                        className="w-4 h-4 text-black bg-white border-white rounded focus:ring-black"
+                      />
+                      <label
+                        htmlFor={model}
+                        className="ml-3 text-sm font-medium text-white"
+                      >
+                        {model}
+                      </label>
+                    </div>
+                  ))}
                 </div>
                 {errors.interested_car_model && (
                   <p className="text-red-500 text-sm mt-1">
@@ -519,8 +514,8 @@ const RegistrationForm: React.FC = () => {
                 </div>
                 <div className="mt-2 text-sm text-gray-400">{fileName}</div>
               </div>
-            </div>
-          </div>
+            </div> 
+          </div> 
 
           <div className="mb-6 pb-4 border-b border-gray-700">
             <h3 className="text-lg font-semibold text-white mb-4 text-center">
@@ -577,13 +572,10 @@ const RegistrationForm: React.FC = () => {
           <div className="mt-5 text-sm text-center text-gray-400">
             By submitting this form, you agree to our Terms and Privacy Policy
           </div>
-         </div>
         </form>
       </div>
     </>
   );
 };
 
-
 export default RegistrationForm;
-
