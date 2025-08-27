@@ -350,7 +350,7 @@ const RegistrationForm: React.FC = () => {
                   htmlFor="assigned_sales_consultant"
                   className="block mb-2 font-semibold text-white"
                 >
-                  Who is your assigned sales assigned_sales_consultant? *
+                  Who is your assigned sales assigned sales consultant? *
                 </label>
                 <select
                   id="assigned_sales_consultant"
@@ -361,7 +361,7 @@ const RegistrationForm: React.FC = () => {
                   className={inputClasses("assigned_sales_consultant")}
                 >
                   <option className="text-white bg-[#222222]" value="">
-                    Select your assigned sales assigned_sales_consultant
+                    Select your assigned sales assigned sales consultant
                   </option>
                   <option
                     className="text-white bg-[#222222]"
@@ -579,4 +579,5 @@ const RegistrationForm: React.FC = () => {
 };
 
 export default RegistrationForm;
+
 
