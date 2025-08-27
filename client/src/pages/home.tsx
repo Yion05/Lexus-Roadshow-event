@@ -400,6 +400,7 @@ const RegistrationForm: React.FC = () => {
                   </p>
                 )}
               </div>
+            </div>
 
           <div className="mb-6 pb-4 border-b border-gray-700">
             <h3 className="text-lg font-semibold text-white mb-4">
@@ -576,6 +577,7 @@ const RegistrationForm: React.FC = () => {
           <div className="mt-5 text-sm text-center text-gray-400">
             By submitting this form, you agree to our Terms and Privacy Policy
           </div>
+         </div>
         </form>
       </div>
     </>
@@ -584,11 +586,3 @@ const RegistrationForm: React.FC = () => {
 
 
 export default RegistrationForm;
-
-
-
-
-
-
-
-
