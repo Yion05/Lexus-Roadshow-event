@@ -361,7 +361,7 @@ const RegistrationForm: React.FC = () => {
                   className={inputClasses("assigned_sales_consultant")}
                 >
                   <option className="text-white bg-[#222222]" value="">
-                    Select here
+                    Select your assigned sales assigned_sales_consultant
                   </option>
                   <option
                     className="text-white bg-[#222222]"
@@ -400,8 +400,8 @@ const RegistrationForm: React.FC = () => {
                   </p>
                 )}
               </div>
-            </div> {/* Close the flex-col div for Personal Information */}
-          </div> {/* Close the mb-6 div for Personal Information */}
+            </div> 
+          </div> 
 
           <div className="mb-6 pb-4 border-b border-gray-700">
             <h3 className="text-lg font-semibold text-white mb-4">
@@ -579,3 +579,4 @@ const RegistrationForm: React.FC = () => {
 };
 
 export default RegistrationForm;
+
