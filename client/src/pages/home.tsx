@@ -391,7 +391,7 @@ const RegistrationForm: React.FC = () => {
                     className="text-white bg-[#222222]"
                     value="⁠May Tan Lee Nian"
                   >
-                    ⁠May Tan Lee Nian55-64
+                    ⁠May Tan Lee Nian
                   </option>
                 </select>
                 {errors.assigned_sales_consultant && (
@@ -586,3 +586,4 @@ const RegistrationForm: React.FC = () => {
 
 
 export default RegistrationForm;
+
