@@ -35,7 +35,7 @@ const Clients: React.FC = () => {
           setError("No clients found.");
         } else {
           setCurrentData(response?.data as CombinedFormData[]);
-          setTotalPages(response?.page as number);
+          setTotalPages(Math.ceil((response?.totalCount as number)/pageSize));
           setTotalItems(response?.totalCount as number);
         }
       } catch (err) {
@@ -441,3 +441,4 @@ const Clients: React.FC = () => {
 };
 
 export default Clients;
+
