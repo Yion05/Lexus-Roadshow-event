@@ -38,7 +38,7 @@ export const form_submit = async (
       resetForm();
       return "Thank you for registering for the LEXUS ROADSHOW!";
     } else {
-      return "Something went wrong in uploading.";
+      return response.data.message;
     }
   } catch (error) {
     throw error;
@@ -106,3 +106,4 @@ export const validate_otp = async (
     setOtpError(true);
   }
 };
+
