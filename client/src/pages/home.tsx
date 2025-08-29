@@ -141,7 +141,7 @@ const RegistrationForm: React.FC = () => {
       const message = await form_submit(formData, resetFormState);
       showAlert(message);
     } catch (error) {
-      showAlert("This number has been registered.");
+      showAlert("An error occurred during submission. Please try again.");
     }
   };
 
@@ -579,6 +579,7 @@ const RegistrationForm: React.FC = () => {
 };
 
 export default RegistrationForm;
+
 
 
 
