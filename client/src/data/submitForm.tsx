@@ -1,5 +1,4 @@
 import axios, { AxiosError } from "axios";
-import axios from "axios";
 import type { apiResponse, FormDataState } from "../types/types";
 import baseURL, { summaryAPI } from "../api/summary.api";
 
@@ -122,6 +121,7 @@ export const validate_otp = async (
     setOtpError(true);
   }
 };
+
 
 
 
