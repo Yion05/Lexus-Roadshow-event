@@ -41,6 +41,21 @@ export const form_submit = async (
       return response.data.message;
     }
   } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError;
+      if (axiosError.response) {
+        switch (axiosError.response.status) {
+          case 401:
+            return "Your OTP is not verified.";
+          case 409:
+            return "This number has been registered.";
+          case 502:
+            return "Service is temporarily unavailable. Please try again later.";
+          default:
+            throw error;
+        }
+      }
+    }
     throw error;
   }
 };
@@ -106,4 +121,5 @@ export const validate_otp = async (
     setOtpError(true);
   }
 };
+
 
