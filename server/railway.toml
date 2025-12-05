@@ -1,0 +1,4 @@
+[deploy]
+healthCheckpath =  "/ping"
+restartPolicyMaxRetries = 10
+restartPolciyType = "ON_FAILURE"
